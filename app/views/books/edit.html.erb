@@ -1,0 +1,14 @@
+<h1>Editing Book</h1>
+<%= render 'layouts/error_messages', book: @book %>
+<%= form_for(@book) do |e| %>
+	
+	<p>Title</p>
+	<%= e.text_field :title %>
+
+	<p>Body</p>
+	<%= e.text_area :body %>
+	
+	<p><%= e.submit %></p>
+	<% end %>
+
+	<p><%= link_to 'Show', book_path(@book.id) %> | <%= link_to 'Back', '/books' %></p>

@@ -1,0 +1,43 @@
+<body>
+	
+
+	<h1>Books</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Body</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<% @books.each do |b| %>
+				<tr>
+					<td><%= b.title %></td>
+					<td><%= b.body %></td>
+					<td><%= link_to 'Show', book_path(b.id) %></td>
+					<td><%= link_to 'Edit', edit_book_path(b.id) %></td>
+					<td><%= link_to 'Destroy', book_path(b), method: :delete, data: {confirm: 'Are you sure?' } %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<h2>New book</h2>
+		<div class="form-alert">
+			<%= render 'layouts/error_messages', book: @book %>
+		</div>
+		<%= form_for(@book) do |f| %>
+			<div class="field">
+				<p>Title</p>
+				<%= f.text_field :title %>
+			</div>
+			<div class="field">
+				<p>Body</p>
+				<%= f.text_area :body %>
+			</div>
+			<div class="create">
+				<p><%= f.submit %></p>
+			</div>
+		<% end %>
+</body>
